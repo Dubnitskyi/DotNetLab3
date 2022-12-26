@@ -1,0 +1,65 @@
+﻿<Window x:Class="ProcessManager.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:ProcessManager"
+        mc:Ignorable="d"
+        Title="Менеджер процесів" ResizeMode="NoResize" WindowStartupLocation="CenterScreen" Height="400" Width="550">
+    <Grid Background="Black">
+        <TabControl x:Name="TabControl" Margin="10">
+            <TabItem Header="Процеси" GotFocus="ProcessesTabFocus">
+                <Grid Background="#FF707070" Margin="0,0,0,0">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*" />
+                        <RowDefinition Height="*" />
+                        <RowDefinition Height="*" />
+                        <RowDefinition Height="*" />
+                        <RowDefinition Height="*" />
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+
+                    <Button x:Name="NotepadButton" Grid.Row="0" Grid.Column="1" Content="Блокнот" Click="ProcessButton_Click" Margin="10" FontSize="20" Background="#FF4A4A4A" Foreground="White"/>
+                    <Button x:Name="CalculatorButton" Grid.Row="1" Grid.Column="1" Content="Калькулятор" Click="ProcessButton_Click" Margin="10" FontSize="20" Foreground="White" Background="#FF4A4A4A"/>
+                    <Button x:Name="FileExplorerButton" Grid.Row="2" Grid.Column="1" Content="Провідник" Click="ProcessButton_Click" Margin="10" FontSize="20" Background="#FF4A4A4A" Foreground="White"/>
+                    <Button x:Name="WordButton" Grid.Row="3" Grid.Column="1" Content="Word" Click="ProcessButton_Click" Margin="10" FontSize="20" Background="#FF4A4A4A" Foreground="White"/>
+                    <Button x:Name="ExcelButton" Grid.Row="4" Grid.Column="1" Content="Excel" Click="ProcessButton_Click" Margin="10" FontSize="20" Background="#FF4A4A4A" Foreground="White"/>
+                </Grid>
+            </TabItem>
+            <TabItem Header="Список процесів" GotFocus="ProcessesListTabFocus">
+                <Grid Background="#FFE5E5E5" Margin="0,0,0,0">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="50" />
+                        <RowDefinition Height="*" />
+                        <RowDefinition Height="50" />
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+
+                    <Button x:Name="ReloadDataGridButton" Grid.Column="0" Grid.Row="0" Content="Оновити" Margin="10" Click="ReloadDataGridButton_Click"/>
+                    <Label x:Name="ProcessIdLabel" Grid.Column="1" Grid.Row="0" Content="Id:" HorizontalContentAlignment="Left" VerticalContentAlignment="Center" Margin="10"/>
+                    <TextBox x:Name="ProcessIdTextBox" Grid.Column="1" Grid.Row="0" TextWrapping="Wrap" Margin="10" HorizontalContentAlignment="Right" Width="80" TextAlignment="Center" Padding="5" MaxLength="9" PreviewTextInput="KeyTextBoxPreviewTextInput"/>
+                    <Button x:Name="KillProcessButton" Grid.Column="2" Grid.Row="0" Content="Kill" Margin="10" Click="KillProcessButton_Click"/>
+                    <DataGrid x:Name="DataGrid" Grid.Column="0" Grid.Row="1" Grid.ColumnSpan="3" IsReadOnly="True"/>
+                    <Label x:Name="ProcessPriorityLabel" Grid.Column="0" Grid.Row="2" Content="Id:" HorizontalContentAlignment="Left" VerticalContentAlignment="Center" Margin="10"/>
+                    <TextBox x:Name="ProcessIdTextBoxPriority" Grid.Column="0" Grid.Row="2" TextWrapping="Wrap" Margin="10" HorizontalContentAlignment="Right" Width="80" TextAlignment="Center" Padding="5" MaxLength="9" PreviewTextInput="KeyTextBoxPreviewTextInput"/>
+                    <ComboBox x:Name="ProcessPriorityList" Grid.Column="1" Grid.Row="2" Margin="10" Padding="5">
+                        <TextBlock>Idle</TextBlock>
+                        <TextBlock>Normal</TextBlock>
+                        <TextBlock>High</TextBlock>
+                        <TextBlock>RealTime</TextBlock>
+                    </ComboBox>
+                    <Button x:Name="ChangeProcessPriorityButton" Grid.Column="2" Grid.Row="2" Content="Змінити приорітет" Margin="10" Click="ChangeProcessPriorityButton_Click"/>
+
+                </Grid>
+            </TabItem>
+        </TabControl>
+    </Grid>
+</Window>

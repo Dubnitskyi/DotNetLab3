@@ -1,0 +1,49 @@
+﻿<Window x:Class="FileEncryption.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:FileEncryption"
+        mc:Ignorable="d"
+        Title="Шифрування файлів" ResizeMode="NoResize" WindowStartupLocation="CenterScreen" Height="260" Width="560">
+
+    <Grid Background="Black">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*" />
+            <RowDefinition Height="30" />
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+
+        <TabControl Grid.Row="0" Grid.Column="0" x:Name="TabControl" HorizontalAlignment="Center" Height="190" VerticalAlignment="Center" Width="530">
+            <TabItem Header="Шифрування">
+                <Grid Background="#FF707070" Margin="0,0,0,0">
+                    <Label x:Name="EncryptionInputFileLabel" Content="Файл для шифрування:" HorizontalAlignment="Left" Margin="9,20,0,0" VerticalAlignment="Top" Foreground="White"/>
+                    <Button x:Name="EncryptionValidtateButton" Content="Зашифрувати" HorizontalAlignment="Left" Margin="434,99,0,0" VerticalAlignment="Top" Width="83" Height="29" Click="ValidtateButton_Click" Background="#FF4A4A4A" Foreground="White"/>
+                    <Button x:Name="EncryptionGenerateKeyButton" Content="Згенерувати ключ" HorizontalAlignment="Left" Margin="128,104,0,0" VerticalAlignment="Top" Width="109" Height="29" Click="GenerateKeyButton_Click" Foreground="White" BorderBrush="#FF898585" Background="#FF4A4A4A"/>
+                </Grid>
+            </TabItem>
+            <TabItem Header="Розшифрування">
+                <Grid Background="#FF707070" Margin="0,0,0,0">
+                    <Label x:Name="DecryptionInputFileLabel" Content="Файл для розшифрування:" HorizontalAlignment="Left" Margin="9,20,0,0" VerticalAlignment="Top" Foreground="White"/>
+                    <Button x:Name="DecryptionValidtateButton" Content="Розшифрувати" HorizontalAlignment="Left" Margin="426,99,0,0" VerticalAlignment="Top" Width="91" Height="29" Click="ValidtateButton_Click" Background="#FF4A4A4A" Foreground="White"/>
+                </Grid>
+            </TabItem>
+        </TabControl>
+
+
+        <TextBox x:Name="InputFileTextBox" HorizontalAlignment="Left" Height="23" Margin="212,50,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="225"/>
+        <Button x:Name="InputFileButton" Content="обрати..." HorizontalAlignment="Left" Margin="452,52,0,0" VerticalAlignment="Top" Width="75" Click="InputFileButton_Click" Background="#FF4A4A4A" Foreground="White"/>
+
+        <Label x:Name="OutputFileLabel" Content="Каталог для збереження файлу:" HorizontalAlignment="Left" Margin="20,88,0,0" VerticalAlignment="Top" Foreground="White"/>
+        <TextBox x:Name="OutputFileTextBox" HorizontalAlignment="Left" Height="23" Margin="212,89,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="225"/>
+        <Button x:Name="OutputFileButton" Content="обрати..." HorizontalAlignment="Left" Margin="452,91,0,0" VerticalAlignment="Top" Width="75" Click="OutputFileButton_Click" Foreground="White" Background="#FF4A4A4A"/>
+
+        <GroupBox Header="Ключ" HorizontalAlignment="Left" Height="59" Margin="24,121,0,0" VerticalAlignment="Top" Width="101" Foreground="White">
+            <TextBox x:Name="KeyTextBox" HorizontalAlignment="Center" Height="23" Margin="0,0,0,0" TextWrapping="Wrap" Text="100" VerticalAlignment="Center" Width="70" MaxLength="3" PreviewTextInput="KeyTextBoxPreviewTextInput"/>
+        </GroupBox>
+
+        <ProgressBar x:Name="ProgressBar" Grid.Row="1" Grid.Column="0" HorizontalAlignment="Left" Height="16" Margin="10,6,0,0" VerticalAlignment="Top" Width="537"/>
+    </Grid>
+</Window>
